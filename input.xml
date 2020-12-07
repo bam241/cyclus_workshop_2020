@@ -1,0 +1,90 @@
+<simulation>
+	<control>
+		<duration>200</duration>
+		<startmonth>1</startmonth>
+		<startyear>0</startyear>
+		<decay>never</decay>
+		<explicit_inventory>true</explicit_inventory>
+	</control>
+
+	<archetypes>
+		<spec>
+			<lib>cycamore</lib>
+			<name>Source</name>
+		</spec>
+		<spec>
+			<lib>cycamore</lib>
+			<name>Sink</name>
+		</spec>
+		<spec>
+			<lib>agents</lib>
+			<name>NullRegion</name>
+		</spec>
+		<spec>
+			<lib>agents</lib>
+			<name>NullInst</name>
+		</spec>
+	</archetypes>
+
+	<facility>
+		<config>
+			<Source>
+				<outcommod>c_uore</outcommod>
+				<outrecipe>r_nat_u</outrecipe>
+				<throughput>10</throughput>
+			</Source>
+		</config>
+		<name>UraniumMine</name>
+	</facility>
+	
+	<facility>
+		<config>
+			<Sink>
+				<in_commods>
+					<val>c_uore</val>
+				</in_commods>
+			</Sink>
+		</config>
+		<name>UraniumSink</name>
+	</facility>
+
+	<region>
+		<config>
+			<NullRegion/>
+		</config>
+		<institution>
+			<config>
+				<NullInst/>
+			</config>
+			<initialfacilitylist>
+				<entry>
+					<number>1</number>
+					<prototype>UraniumMine</prototype>
+				</entry>
+				<entry>
+					<number>1</number>
+					<prototype>UraniumSink</prototype>
+				</entry>
+			</initialfacilitylist>
+			<name>My_Inst</name>
+		</institution>
+		<name>My_Region</name>
+	</region>
+
+
+
+
+	<recipe>
+		<basis>mass</basis>
+		<name>r_nat_u</name>
+		<nuclide>
+			<comp>0.00711</comp>
+			<id>92235</id>
+		</nuclide>
+		<nuclide>
+			<comp>0.99289</comp>
+			<id>92238</id>
+		</nuclide>
+	</recipe>
+
+</simulation>
