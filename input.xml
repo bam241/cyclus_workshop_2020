@@ -17,6 +17,10 @@
 			<name>Sink</name>
 		</spec>
 		<spec>
+			<lib>cycamore</lib>
+			<name>Enrichment</name>
+		</spec>
+		<spec>
 			<lib>agents</lib>
 			<name>NullRegion</name>
 		</spec>
@@ -39,14 +43,42 @@
 	
 	<facility>
 		<config>
+			<Enrichment>
+				<feed_commod>c_uore</feed_commod>
+				<feed_recipe>r_nat_u</feed_recipe>
+				<initial_feed>0</initial_feed>
+				<max_enrich>0.05</max_enrich>
+				<max_feed_inventory>10000</max_feed_inventory>
+				<product_commod>c_leu</product_commod>
+				<swu_capacity>100000</swu_capacity>
+				<tails_commod>c_u_depleted</tails_commod>			
+			</Enrichment>
+		</config>
+		<name>UraniumEnrichement</name>
+	</facility>
+	
+	<facility>
+		<config>
 			<Sink>
 				<in_commods>
-					<val>c_uore</val>
+					<val>c_leu</val>
 				</in_commods>
+				<recipe_name>r_leu</recipe_name>
 			</Sink>
 		</config>
 		<name>UraniumSink</name>
 	</facility>
+	<facility>
+		<config>
+			<Sink>
+				<in_commods>
+					<val>c_u_depleted</val>
+				</in_commods>
+			</Sink>
+		</config>
+		<name>DepletedUraniumSink</name>
+	</facility>
+
 
 	<region>
 		<config>
@@ -63,7 +95,15 @@
 				</entry>
 				<entry>
 					<number>1</number>
+					<prototype>UraniumEnrichement</prototype>
+				</entry>
+				<entry>
+					<number>1</number>
 					<prototype>UraniumSink</prototype>
+				</entry>
+				<entry>
+					<number>1</number>
+					<prototype>DepletedUraniumSink</prototype>
 				</entry>
 			</initialfacilitylist>
 			<name>My_Inst</name>
@@ -83,6 +123,18 @@
 		</nuclide>
 		<nuclide>
 			<comp>0.99289</comp>
+			<id>92238</id>
+		</nuclide>
+	</recipe>
+	<recipe>
+		<basis>mass</basis>
+		<name>r_leu</name>
+		<nuclide>
+			<comp>4</comp>
+			<id>92235</id>
+		</nuclide>
+		<nuclide>
+			<comp>96</comp>
 			<id>92238</id>
 		</nuclide>
 	</recipe>
