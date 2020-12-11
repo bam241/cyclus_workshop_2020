@@ -18,6 +18,10 @@
 		</spec>
 		<spec>
 			<lib>cycamore</lib>
+			<name>Reactor</name>
+		</spec>
+		<spec>
+			<lib>cycamore</lib>
 			<name>Enrichment</name>
 		</spec>
 		<spec>
@@ -59,14 +63,45 @@
 	
 	<facility>
 		<config>
+			<Reactor>
+				<fuel_incommods>
+					<val>c_mox</val>
+					<val>c_leu</val>
+				</fuel_incommods>
+				<fuel_inrecipes>
+					<val>r_mox</val>
+					<val>r_leu</val>
+				</fuel_inrecipes>
+				<fuel_prefs>
+					<val>100</val>
+					<val>1</val>
+				</fuel_prefs>
+				<fuel_outcommods>
+					<val>c_mox_irradiated</val>
+					<val>c_leu_irradiated</val>
+				</fuel_outcommods>
+				<fuel_outrecipes>
+					<val>r_mox_irratiaded</val>
+					<val>r_leu_irratiaded</val>
+				</fuel_outrecipes>
+				<assem_size>10</assem_size>
+				<n_assem_batch>1</n_assem_batch>
+				<n_assem_core>3</n_assem_core>
+				<cycle_time>12</cycle_time>
+				<power_cap>10</power_cap>
+			</Reactor>
+		</config>
+		<name>PWR</name>
+	</facility>
+	<facility>
+		<config>
 			<Sink>
 				<in_commods>
-					<val>c_leu</val>
+					<val>c_leu_irradiated</val>
 				</in_commods>
-				<recipe_name>r_leu</recipe_name>
 			</Sink>
 		</config>
-		<name>UraniumSink</name>
+		<name>IrradiatedUraniumSink</name>
 	</facility>
 	<facility>
 		<config>
@@ -99,7 +134,11 @@
 				</entry>
 				<entry>
 					<number>1</number>
-					<prototype>UraniumSink</prototype>
+					<prototype>PWR</prototype>
+				</entry>
+				<entry>
+					<number>1</number>
+					<prototype>IrradiatedUraniumSink</prototype>
 				</entry>
 				<entry>
 					<number>1</number>
@@ -135,6 +174,62 @@
 		</nuclide>
 		<nuclide>
 			<comp>96</comp>
+			<id>92238</id>
+		</nuclide>
+	</recipe>
+	<recipe>
+		<basis>mass</basis>
+		<name>r_leu_irratiaded</name>
+		<nuclide>
+			<comp>1</comp>
+			<id>92235</id>
+		</nuclide>
+		<nuclide>
+			<comp>95</comp>
+			<id>92238</id>
+		</nuclide>
+		<nuclide>
+			<comp>3</comp>
+			<id>55137</id>
+		</nuclide>
+		<nuclide>
+			<comp>0.5</comp>
+			<id>94239</id>
+		</nuclide>
+		<nuclide>
+			<comp>0.5</comp>
+			<id>95241</id>
+		</nuclide>
+	</recipe>
+	<recipe>
+		<basis>mass</basis>
+		<name>r_mox</name>
+		<nuclide>
+			<comp>7</comp>
+			<id>94239</id>
+		</nuclide>
+		<nuclide>
+			<comp>93</comp>
+			<id>92238</id>
+		</nuclide>
+	</recipe>
+	<recipe>
+		<basis>mass</basis>
+		<name>r_mox_irrated</name>
+		<nuclide>
+			<comp>2</comp>
+			<id>94239</id>
+		</nuclide>
+		<nuclide>
+			<comp>1</comp>
+			<id>95241</id>
+		</nuclide>
+		<nuclide>
+			<comp>5</comp>
+			<id>55137</id>
+		</nuclide>
+		<nuclide>
+			<comp>92</comp>
 			<id>92238</id>
 		</nuclide>
 	</recipe>
