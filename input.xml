@@ -21,7 +21,7 @@
 			<name>Reactor</name>
 		</spec>
 		<spec>
-			<lib>cycamore</lib>
+			<lib>my_arch</lib>
 			<name>Enrichment</name>
 		</spec>
 		<spec>
@@ -157,8 +157,12 @@
 		<basis>mass</basis>
 		<name>r_nat_u</name>
 		<nuclide>
-			<comp>0.00711</comp>
+			<comp>0.007</comp>
 			<id>92235</id>
+		</nuclide>
+		<nuclide>
+			<comp>0.00011</comp>
+			<id>92236</id>
 		</nuclide>
 		<nuclide>
 			<comp>0.99289</comp>
